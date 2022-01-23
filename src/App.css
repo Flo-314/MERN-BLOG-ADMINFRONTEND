@@ -1,0 +1,68 @@
+@import url("https://fonts.googleapis.com/css2?family=Vollkorn+SC:wght@700&display=swap");
+* {
+  padding: 0;
+  margin: 0;
+  text-decoration: none;
+  box-sizing: border-box !important;
+}
+body {
+  font-family: "Roboto", "ubuntu";
+}
+ul {
+  list-style: none;
+}
+
+#headerTitle,
+#footerTitle {
+  font-family: "Vollkorn SC";
+}
+
+
+.primaryStrong{
+  color:#CAA386;
+}
+header {
+  position: sticky !important;
+  top: 0;
+  box-shadow: 0 16px 48px rgb(0 0 0 / 15%);
+}
+.hiddenMobile {
+  display: none !important;
+}
+
+.featuredArticle, .LatestArticle, .boxShadow{
+  box-shadow: 0 16px 48px rgb(0 0 0 / 15%);
+
+}
+
+.strongLine{
+  background-color: #D19163;
+  height: 6px;
+  max-width: 100px;
+  border-radius: 5px;
+  margin-bottom: 1.5em;
+}
+
+@media (max-width: 950px) {
+  .hiddenDesktop {
+    display: none !important;
+  }
+  .hiddenMobile {
+    display: inherit !important;
+  }
+  .ColumnMobile{
+    flex-direction: column;
+}
+.mobileGridRows{
+  grid-template-columns: 1fr !important;
+  grid-template-rows: 1fr 1fr 1fr !important;
+  justify-items: center;
+}
+
+}
+
+
+@media (max-width: 550px){
+
+
+}
