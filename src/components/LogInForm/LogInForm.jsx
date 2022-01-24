@@ -1,4 +1,4 @@
-import {Box, Flex} from "@chakra-ui/react";
+import {Box, Flex, Text} from "@chakra-ui/react";
 import {
   FormControl,
   FormLabel,
@@ -9,18 +9,27 @@ import {
 } from "@chakra-ui/react";
 import {useState, useEffect} from "react";
 
-import PostLogin from "../fetchModules/PostLogin";
+import PostLogin from "../helpermodules/PostLogin";
 
-function LogInForm() {
+function LogInForm({storeUser}) {
   const [show, setShow] = useState(false);
   const [username, SetUsername] = useState("");
   const [password, SetPassword] = useState("");
+  const [errorMsg, setErrorMsg] = useState("");
 
   const handleClick = () => setShow(!show);
-  const loginHandler = async (user, password) => {
-    let responseInfo = await PostLogin(user, password);
 
-    responseInfo.token = "Bearer" + responseInfo.token;
+  const loginHandler = async (user, password) => {
+    let User = await PostLogin(user, password);
+
+    if (User.message === "Auth Passed") {
+      storeUser(User);
+    } else {
+      setErrorMsg("defined");
+      setTimeout(() => {
+        setErrorMsg("");
+      }, 2000);
+    }
   };
 
   return (
@@ -47,9 +56,11 @@ function LogInForm() {
             padding={5}
           >
             <form
-              onSubmit={(event) => {
-                loginHandler(username, password);
+              onSubmit={async (event) => {
                 event.preventDefault();
+
+                await loginHandler(username, password);
+                window.location.href = "/";
               }}
             >
               <FormControl isRequired>
@@ -94,6 +105,11 @@ function LogInForm() {
               <Button colorScheme="teal" mt={4} type="submit">
                 Submit
               </Button>
+              {errorMsg !== "" && (
+                <Text color={"red"} fontSize={18}>
+                  Wrong Password or Username.
+                </Text>
+              )}
             </form>
           </Flex>
         </Flex>
