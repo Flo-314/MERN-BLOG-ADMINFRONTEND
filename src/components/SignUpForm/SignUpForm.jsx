@@ -11,17 +11,48 @@ import {useState, useEffect, createRef} from "react";
 
 import FileUploader from "../helpermodules/FileUploader";
 import PostSignUp from "../helpermodules/PostSignUp";
+
 function SignUpForm() {
   const [show, setShow] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
+  const [isLoading, SetLoading] = useState(false);
 
   const [name, SetName] = useState("");
   const [username, SetUsername] = useState("");
   const [password, SetPassword] = useState("");
+  const [confPassword, SetConfPassword] = useState("");
+
   const [email, SetEmail] = useState("");
   const [secretPassword, SetSecretPassword] = useState("");
   const [selectedFile, setSelectedFile] = useState(null);
 
+  const sumbitForm = async (event) => {
+    event.preventDefault();
+    SetLoading(true);
+    const body = {
+      name,
+      email,
+      username,
+      password,
+      confpassword: confPassword,
+      secretpassword: secretPassword,
+      image: selectedFile,
+    };
+    let response = await PostSignUp(body, selectedFile);
+
+    if (response.sucess !== undefined) {
+      setTimeout(() => {
+        window.location.href = "/Log-In";
+      }, 3000);
+    } else {
+      setErrorMsg(response.errors.msg);
+      SetLoading(false);
+
+      setTimeout(() => {
+        setErrorMsg("");
+      }, 2000);
+    }
+  };
   const handleClick = () => setShow(!show);
 
   return (
@@ -48,23 +79,7 @@ function SignUpForm() {
             padding={5}
           >
             <Heading>Create your Account</Heading>
-            <form
-              encType="multipart/form-data"
-              onSubmit={async (event) => {
-                event.preventDefault();
-                let body = {
-                  name,
-                  email,
-                  username,
-                  password,
-                  secretpassword: secretPassword,
-                  image: selectedFile,
-                };
-
-                console.log(selectedFile);
-                PostSignUp(body, selectedFile);
-              }}
-            >
+            <form encType="multipart/form-data" onSubmit={(e) => sumbitForm(e)}>
               <FormControl isRequired>
                 <FormLabel htmlFor="name" marginTop={5}>
                   Complete Name
@@ -142,46 +157,70 @@ function SignUpForm() {
                     </Button>
                   </InputRightElement>
                 </InputGroup>
+                <FormLabel htmlFor="confpassword" marginTop={5}>
+                  Confirm Password
+                </FormLabel>
+                <InputGroup>
+                  <Input
+                    autoComplete="true"
+                    id="confpassword"
+                    name="confpassword"
+                    placeholder="confirm password"
+                    pr="4.5rem"
+                    type={show ? "text" : "password"}
+                    value={confPassword}
+                    onChange={(event) => {
+                      SetConfPassword(event.target.value);
+                    }}
+                  />
+                </InputGroup>
+
+                <FormLabel htmlFor="secretCode" marginTop={5}>
+                  SECRET CODE
+                </FormLabel>
+
+                <InputGroup>
+                  <Input
+                    autoComplete="false"
+                    id="secretCode"
+                    name="secretCode"
+                    placeholder="secretCode"
+                    type="password"
+                    value={secretPassword}
+                    onChange={(event) => {
+                      SetSecretPassword(event.target.value);
+                    }}
+                  />
+                </InputGroup>
+
+                <FormLabel htmlFor="image" marginTop={5}>
+                  Profile Image
+                </FormLabel>
+
+                <InputGroup>
+                  <FileUploader onFileSelect={(file) => setSelectedFile(file)} />
+                </InputGroup>
+
+                {isLoading ? (
+                  <Button
+                    isLoading
+                    bg="secondary.strong"
+                    color="white"
+                    loadingText="Submitting"
+                    mt={4}
+                    type="submit"
+                  >
+                    Submit
+                  </Button>
+                ) : (
+                  <Button bg="secondary.strong" color="white" mt={4} type="submit">
+                    Submit
+                  </Button>
+                )}
               </FormControl>
-
               {errorMsg !== "" && (
                 <Text color={"red"} fontSize={18}>
-                  Wrong Password or Username.
-                </Text>
-              )}
-
-              <FormLabel htmlFor="secretCode" marginTop={5}>
-                SECRET CODE
-              </FormLabel>
-
-              <InputGroup>
-                <Input
-                  autoComplete="false"
-                  id="secretCode"
-                  name="secretCode"
-                  placeholder="secretCode"
-                  type="password"
-                  value={secretPassword}
-                  onChange={(event) => {
-                    SetSecretPassword(event.target.value);
-                  }}
-                />
-              </InputGroup>
-
-              <FormLabel htmlFor="image" marginTop={5}>
-                Profile Image
-              </FormLabel>
-
-              <InputGroup>
-                <FileUploader onFileSelect={(file) => setSelectedFile(file)} />
-              </InputGroup>
-
-              <Button bg="secondary.strong" color="white" mt={4} type="submit">
-                Submit
-              </Button>
-              {errorMsg !== "" && (
-                <Text color={"red"} fontSize={18}>
-                  Wrong Password or Username.
+                  {errorMsg}
                 </Text>
               )}
             </form>
