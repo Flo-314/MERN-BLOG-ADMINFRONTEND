@@ -1,4 +1,4 @@
-import {useState} from "react";
+import {useState, useEffect} from "react";
 import {BrowserRouter, Routes, Route} from "react-router-dom";
 import {ChakraProvider} from "@chakra-ui/react";
 
@@ -14,6 +14,8 @@ import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import LogOut from "./components/LogOut/LogOut";
 function App() {
+  const [User, setUser] = useState();
+
   return (
     <BrowserRouter>
       <ChakraProvider theme={theme}>
