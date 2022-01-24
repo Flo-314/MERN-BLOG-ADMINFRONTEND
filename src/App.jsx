@@ -40,12 +40,12 @@ function App() {
       <ChakraProvider theme={theme}>
         <Header />
         <Routes>
-          <Route element={<Home user={User} />} path="/" />
-          <Route element={<PostForm user={User} />} path="/createPost" />
-          <Route element={<LogInForm storeUser={storeUser} user={User} />} path="/Log-In" />
-          <Route element={<LogOut user={User} />} path="/Log-Out" />
-          <Route element={<Profile user={User} />} path="/Profile" />
-          <Route element={<SignUpForm user={User} />} path="/Sign-Up" />
+          <Route element={<Home User={User} />} path="/" />
+          <Route element={<PostForm User={User} />} path="/createPost" />
+          <Route element={<LogInForm User={User} storeUser={storeUser} />} path="/Log-In" />
+          <Route element={<LogOut setUser={setUser} />} path="/Log-Out" />
+          <Route element={<Profile User={User} />} path="/Profile" />
+          <Route element={<SignUpForm User={User} />} path="/Sign-Up" />
         </Routes>
         <Footer />
       </ChakraProvider>

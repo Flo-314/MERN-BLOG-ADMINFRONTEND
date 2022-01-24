@@ -24,6 +24,7 @@ function LogInForm({storeUser}) {
 
     if (User.message === "Auth Passed") {
       storeUser(User);
+      window.location.href = "/";
     } else {
       setErrorMsg("defined");
       setTimeout(() => {
@@ -58,9 +59,7 @@ function LogInForm({storeUser}) {
             <form
               onSubmit={async (event) => {
                 event.preventDefault();
-
                 await loginHandler(username, password);
-                window.location.href = "/";
               }}
             >
               <FormControl isRequired>
