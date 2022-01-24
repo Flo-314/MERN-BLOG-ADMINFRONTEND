@@ -80,17 +80,18 @@ function SignUpForm() {
           >
             <Heading>Create your Account</Heading>
             <form encType="multipart/form-data" onSubmit={(e) => sumbitForm(e)}>
-              <FormControl isRequired>
-                <FormLabel htmlFor="name" marginTop={5}>
+              <FormControl isRequired position={"static"}>
+                <FormLabel htmlFor="name" marginTop={5} position={"static"}>
                   Complete Name
                 </FormLabel>
 
-                <InputGroup>
+                <InputGroup position={"static"}>
                   <Input
                     autoComplete="true"
                     id="name"
                     name="name"
                     placeholder="name"
+                    position={"static"}
                     type={"text"}
                     value={name}
                     onChange={(event) => {
@@ -103,12 +104,13 @@ function SignUpForm() {
                   Email
                 </FormLabel>
 
-                <InputGroup>
+                <InputGroup position={"static"}>
                   <Input
                     autoComplete="true"
                     id="email"
                     name="email"
                     placeholder="email"
+                    position={"static"}
                     type={"email"}
                     value={email}
                     onChange={(event) => {
@@ -121,12 +123,13 @@ function SignUpForm() {
                   Username
                 </FormLabel>
 
-                <InputGroup>
+                <InputGroup position={"static"}>
                   <Input
                     autoComplete="true"
                     id="username"
                     name="username"
                     placeholder="username"
+                    position={"static"}
                     type={"text"}
                     value={username}
                     onChange={(event) => {
@@ -138,12 +141,13 @@ function SignUpForm() {
                   Password
                 </FormLabel>
 
-                <InputGroup>
+                <InputGroup position={"static"}>
                   <Input
                     autoComplete="true"
                     id="password"
                     name="password"
                     placeholder="Enter password"
+                    position={"static"}
                     pr="4.5rem"
                     type={show ? "text" : "password"}
                     value={password}
@@ -152,7 +156,7 @@ function SignUpForm() {
                     }}
                   />
                   <InputRightElement width="4.5rem">
-                    <Button h="1.75rem" size="sm" onClick={handleClick}>
+                    <Button h="1.75rem" position={"static"} size="sm" onClick={handleClick}>
                       {show ? "Hide" : "Show"}
                     </Button>
                   </InputRightElement>
@@ -160,12 +164,13 @@ function SignUpForm() {
                 <FormLabel htmlFor="confpassword" marginTop={5}>
                   Confirm Password
                 </FormLabel>
-                <InputGroup>
+                <InputGroup position={"static"}>
                   <Input
                     autoComplete="true"
                     id="confpassword"
                     name="confpassword"
                     placeholder="confirm password"
+                    position={"static"}
                     pr="4.5rem"
                     type={show ? "text" : "password"}
                     value={confPassword}
@@ -179,12 +184,13 @@ function SignUpForm() {
                   SECRET CODE
                 </FormLabel>
 
-                <InputGroup>
+                <InputGroup position={"static"}>
                   <Input
                     autoComplete="false"
                     id="secretCode"
                     name="secretCode"
                     placeholder="secretCode"
+                    position={"static"}
                     type="password"
                     value={secretPassword}
                     onChange={(event) => {
@@ -197,8 +203,11 @@ function SignUpForm() {
                   Profile Image
                 </FormLabel>
 
-                <InputGroup>
-                  <FileUploader onFileSelect={(file) => setSelectedFile(file)} />
+                <InputGroup position={"static"}>
+                  <FileUploader
+                    position={"static"}
+                    onFileSelect={(file) => setSelectedFile(file)}
+                  />
                 </InputGroup>
 
                 {isLoading ? (
@@ -208,12 +217,19 @@ function SignUpForm() {
                     color="white"
                     loadingText="Submitting"
                     mt={4}
+                    position={"static"}
                     type="submit"
                   >
                     Submit
                   </Button>
                 ) : (
-                  <Button bg="secondary.strong" color="white" mt={4} type="submit">
+                  <Button
+                    bg="secondary.strong"
+                    color="white"
+                    mt={4}
+                    position={"static"}
+                    type="submit"
+                  >
                     Submit
                   </Button>
                 )}
