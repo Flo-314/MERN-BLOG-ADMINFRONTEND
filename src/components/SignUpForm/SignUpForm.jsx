@@ -7,8 +7,10 @@ import {
   Input,
   InputGroup,
 } from "@chakra-ui/react";
-import {useState, useEffect} from "react";
+import {useState, useEffect, createRef} from "react";
 
+import FileUploader from "../helpermodules/FileUploader";
+import PostSignUp from "../helpermodules/PostSignUp";
 function SignUpForm() {
   const [show, setShow] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
@@ -18,7 +20,7 @@ function SignUpForm() {
   const [password, SetPassword] = useState("");
   const [email, SetEmail] = useState("");
   const [secretPassword, SetSecretPassword] = useState("");
-  const [file, SetFile] = useState(undefined);
+  const [selectedFile, setSelectedFile] = useState(null);
 
   const handleClick = () => setShow(!show);
 
@@ -47,9 +49,20 @@ function SignUpForm() {
           >
             <Heading>Create your Account</Heading>
             <form
+              encType="multipart/form-data"
               onSubmit={async (event) => {
                 event.preventDefault();
-                await loginHandler(username, password);
+                let body = {
+                  name,
+                  email,
+                  username,
+                  password,
+                  secretpassword: secretPassword,
+                  image: selectedFile,
+                };
+
+                console.log(selectedFile);
+                PostSignUp(body, selectedFile);
               }}
             >
               <FormControl isRequired>
@@ -160,20 +173,10 @@ function SignUpForm() {
               </FormLabel>
 
               <InputGroup>
-                <Input
-                  accept="image/*"
-                  id="image"
-                  name="image"
-                  placeholder="image"
-                  type="file"
-                  value={file}
-                  onChange={(event) => {
-                    SetFile(event.target.file);
-                  }}
-                />
+                <FileUploader onFileSelect={(file) => setSelectedFile(file)} />
               </InputGroup>
 
-              <Button colorScheme="teal" mt={4} type="submit">
+              <Button bg="secondary.strong" color="white" mt={4} type="submit">
                 Submit
               </Button>
               {errorMsg !== "" && (
