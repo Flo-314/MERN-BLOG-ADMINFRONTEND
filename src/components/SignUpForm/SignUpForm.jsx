@@ -11,9 +11,14 @@ import {useState, useEffect} from "react";
 
 function SignUpForm() {
   const [show, setShow] = useState(false);
+  const [errorMsg, setErrorMsg] = useState("");
+
+  const [name, SetName] = useState("");
   const [username, SetUsername] = useState("");
   const [password, SetPassword] = useState("");
-  const [errorMsg, setErrorMsg] = useState("");
+  const [email, SetEmail] = useState("");
+  const [secretPassword, SetSecretPassword] = useState("");
+  const [file, SetFile] = useState(undefined);
 
   const handleClick = () => setShow(!show);
 
@@ -59,9 +64,9 @@ function SignUpForm() {
                     name="name"
                     placeholder="name"
                     type={"text"}
-                    value={username}
+                    value={name}
                     onChange={(event) => {
-                      SetUsername(event.target.value);
+                      SetName(event.target.value);
                     }}
                   />
                 </InputGroup>
@@ -77,9 +82,9 @@ function SignUpForm() {
                     name="email"
                     placeholder="email"
                     type={"email"}
-                    value={username}
+                    value={email}
                     onChange={(event) => {
-                      SetUsername(event.target.value);
+                      SetEmail(event.target.value);
                     }}
                   />
                 </InputGroup>
@@ -143,9 +148,9 @@ function SignUpForm() {
                   name="secretCode"
                   placeholder="secretCode"
                   type="password"
-                  value={username}
+                  value={secretPassword}
                   onChange={(event) => {
-                    SetUsername(event.target.value);
+                    SetSecretPassword(event.target.value);
                   }}
                 />
               </InputGroup>
@@ -156,13 +161,14 @@ function SignUpForm() {
 
               <InputGroup>
                 <Input
+                  accept="image/*"
                   id="image"
                   name="image"
                   placeholder="image"
                   type="file"
-                  value={username}
+                  value={file}
                   onChange={(event) => {
-                    SetUsername(event.target.value);
+                    SetFile(event.target.file);
                   }}
                 />
               </InputGroup>
@@ -170,6 +176,11 @@ function SignUpForm() {
               <Button colorScheme="teal" mt={4} type="submit">
                 Submit
               </Button>
+              {errorMsg !== "" && (
+                <Text color={"red"} fontSize={18}>
+                  Wrong Password or Username.
+                </Text>
+              )}
             </form>
           </Flex>
         </Flex>
