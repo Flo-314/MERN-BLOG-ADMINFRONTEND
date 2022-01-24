@@ -2,7 +2,7 @@ import {Box, Flex, Heading, Link, Text} from "@chakra-ui/react";
 import {LogoGithubIcon} from "chakra-ui-ionicons";
 import {Link as RouteLink} from "react-router-dom";
 
-function Footer() {
+function Footer({User}) {
   return (
     <footer>
       <Box bg={"secondary.light"}>
@@ -30,14 +30,24 @@ function Footer() {
                   </Link>
                 </li>
                 <li>
-                  <Link as={RouteLink} to={"/posts"}>
-                    Create Post
-                  </Link>
+                  {User !== undefined && (
+                    <Link as={RouteLink} to={"/posts"}>
+                      Create Post
+                    </Link>
+                  )}
                 </li>
                 <li>
-                  <Link as={RouteLink} to={"/about"}>
-                    Log-Out
-                  </Link>
+                  {User ? (
+                    <Link as={RouteLink} to={"/Log-Out"}>
+                      {" "}
+                      Log Out
+                    </Link>
+                  ) : (
+                    <Link as={RouteLink} to={"/Log-In"}>
+                      {" "}
+                      Log In
+                    </Link>
+                  )}
                 </li>
               </Flex>
             </ul>

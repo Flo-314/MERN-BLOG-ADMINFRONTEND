@@ -38,7 +38,7 @@ function App() {
   return (
     <BrowserRouter>
       <ChakraProvider theme={theme}>
-        <Header />
+        <Header User={User} />
         <Routes>
           <Route element={<Home User={User} />} path="/" />
           <Route element={<PostForm User={User} />} path="/createPost" />
@@ -47,7 +47,7 @@ function App() {
           <Route element={<Profile User={User} />} path="/Profile" />
           <Route element={<SignUpForm User={User} />} path="/Sign-Up" />
         </Routes>
-        <Footer />
+        <Footer User={User} />
       </ChakraProvider>
     </BrowserRouter>
   );

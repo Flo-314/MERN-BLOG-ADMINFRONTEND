@@ -3,7 +3,7 @@ import {Menu, MenuButton, MenuList, MenuItem, Button} from "@chakra-ui/react";
 import {ChevronDownIcon} from "chakra-ui-ionicons";
 import {Link as RouteLink} from "react-router-dom";
 
-function Nav() {
+function Nav({User}) {
   return (
     <nav>
       <ul>
@@ -36,44 +36,63 @@ function Nav() {
               </MenuItem>
               <MenuItem>
                 <h3>
-                  <Link
-                    as={RouteLink}
-                    className="primaryStrong"
-                    color={"primary.strong"}
-                    fontSize={23}
-                    fontWeight={"bold"}
-                    to={"/createPost"}
-                  >
-                    Create Post
-                  </Link>
+                  {User !== undefined && (
+                    <Link
+                      as={RouteLink}
+                      className="primaryStrong"
+                      color={"primary.strong"}
+                      fontSize={23}
+                      fontWeight={"bold"}
+                      to={"/createPost"}
+                    >
+                      Create Post
+                    </Link>
+                  )}
                 </h3>
               </MenuItem>
               <MenuItem>
                 <h3>
-                  <Link
-                    as={RouteLink}
-                    className="primaryStrong"
-                    color={"primary.strong"}
-                    fontSize={23}
-                    fontWeight={"bold"}
-                    to={"/Log-Out"}
-                  >
-                    Log Out
-                  </Link>
+                  {User ? (
+                    <Link
+                      as={RouteLink}
+                      className="primaryStrong"
+                      color={"primary.strong"}
+                      fontSize={23}
+                      fontWeight={"bold"}
+                      to={"/Log-Out"}
+                    >
+                      {" "}
+                      Log Out
+                    </Link>
+                  ) : (
+                    <Link
+                      as={RouteLink}
+                      className="primaryStrong"
+                      color={"primary.strong"}
+                      fontSize={23}
+                      fontWeight={"bold"}
+                      to={"/Log-In"}
+                    >
+                      {" "}
+                      Log In
+                    </Link>
+                  )}
                 </h3>
               </MenuItem>
               <MenuItem>
                 <h3>
-                  <Link
-                    as={RouteLink}
-                    className="primaryStrong"
-                    color={"primary.strong"}
-                    fontSize={23}
-                    fontWeight={"bold"}
-                    to={"/Profile"}
-                  >
-                    Profile
-                  </Link>
+                  {User !== undefined && (
+                    <Link
+                      as={RouteLink}
+                      className="primaryStrong"
+                      color={"primary.strong"}
+                      fontSize={23}
+                      fontWeight={"bold"}
+                      to={"/Profile"}
+                    >
+                      Profile
+                    </Link>
+                  )}
                 </h3>
               </MenuItem>
             </MenuList>
@@ -95,23 +114,35 @@ function Nav() {
           </li>
           <li>
             <h3>
-              <Link as={RouteLink} to={"/createPost"}>
-                Create Post
-              </Link>
+              {User !== undefined && (
+                <Link as={RouteLink} to={"/createPost"}>
+                  Create Post
+                </Link>
+              )}
             </h3>
           </li>
           <li>
             <h3>
-              <Link as={RouteLink} to={"/Profile"}>
-                Profile
-              </Link>
+              {User !== undefined && (
+                <Link as={RouteLink} to={"/Profile"}>
+                  Profile
+                </Link>
+              )}
             </h3>
           </li>
           <li>
             <h3>
-              <Link as={RouteLink} to={"/Log-Out"}>
-                Log Out{" "}
-              </Link>
+              {User ? (
+                <Link as={RouteLink} to={"/Log-Out"}>
+                  {" "}
+                  Log Out
+                </Link>
+              ) : (
+                <Link as={RouteLink} to={"/Log-In"}>
+                  {" "}
+                  Log In
+                </Link>
+              )}
             </h3>
           </li>
         </Flex>
