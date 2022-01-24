@@ -1,16 +1,8 @@
-    -header/nav:
-        -si userState !== undefined
-            -carga default
-        -si userState == undefiend
-            -carga sign up 
-            -log in
-            -home
-    
-    
     -home:
-        -un conditional rendering de posts con create delete edit if User
-           -postcard
-                -postEdit
+        -If user
+            -fetch posts
+                -postcard
+                    -postEdit
     -postForm:
         -if no hay user
             -se queda un loading y te dice NO AUTORIZADO WACHIN

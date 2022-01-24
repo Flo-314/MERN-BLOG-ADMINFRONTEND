@@ -1,6 +1,4 @@
 function Home({User}) {
-  console.log(User);
-
   return <main />;
 }
 

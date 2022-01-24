@@ -3,7 +3,7 @@ import {Link as RouteLink} from "react-router-dom";
 
 import Nav from "./Nav";
 import Media from "./Media";
-function Header() {
+function Header({User}) {
   return (
     <header>
       <Box bg="primary.light" padding="2">
@@ -22,7 +22,7 @@ function Header() {
               </Link>
             </Heading>
           </Box>
-          <Nav />
+          <Nav User={User} />
           <Media />
         </Flex>
       </Box>

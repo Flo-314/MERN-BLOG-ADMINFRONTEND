@@ -36,7 +36,7 @@ function Nav({User}) {
               </MenuItem>
               <MenuItem>
                 <h3>
-                  {User !== undefined && (
+                  {User ? (
                     <Link
                       as={RouteLink}
                       className="primaryStrong"
@@ -46,6 +46,17 @@ function Nav({User}) {
                       to={"/createPost"}
                     >
                       Create Post
+                    </Link>
+                  ) : (
+                    <Link
+                      as={RouteLink}
+                      className="primaryStrong"
+                      color={"primary.strong"}
+                      fontSize={23}
+                      fontWeight={"bold"}
+                      to={"/Sign-Up"}
+                    >
+                      Sign Up
                     </Link>
                   )}
                 </h3>
@@ -114,9 +125,13 @@ function Nav({User}) {
           </li>
           <li>
             <h3>
-              {User !== undefined && (
+              {User ? (
                 <Link as={RouteLink} to={"/createPost"}>
                   Create Post
+                </Link>
+              ) : (
+                <Link as={RouteLink} to={"/Sign-Up"}>
+                  Sign Up
                 </Link>
               )}
             </h3>
