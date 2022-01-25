@@ -11,7 +11,7 @@ function Home({User}) {
     // eslint-disable-next-line no-unused-vars
     const handlePosts = (async () => {
       if (User) {
-        let posts = await getPosts();
+        let posts = await getPosts(User.token);
 
         setPosts(posts.posts);
       }

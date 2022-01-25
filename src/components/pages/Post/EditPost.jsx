@@ -71,7 +71,7 @@ function EditPost({User}) {
     // eslint-disable-next-line no-unused-vars
     const handleGetPost = (async () => {
       if (User) {
-        let Post = await getPost(id);
+        let Post = await getPost(id, User.token);
 
         setPost(Post);
         SetCategory(Post.category);
