@@ -1,6 +1,6 @@
 const putUser = async (body, token, id) => {
   try {
-    const LINK = "http://localhost:4001/api/user/" + id;
+    const LINK = "https://floblogapi.herokuapp.com/api/user/" + id;
 
     let response = await fetch(LINK, {
       method: "PUT",
