@@ -1,29 +1,14 @@
-    -home:
-        -If user
-            -fetch posts
-                -postcard
-                    -postEdit
-    -postForm:
-        -if no hay user
-            -se queda un loading y te dice NO AUTORIZADO WACHIN
-        -if hay user
-            -the renderea un form y el psot de ese form postea todo
-                -el form tiene que tener
-                    -title
-                    -content
-                    -image
-                    -photo
-                    -category
-                    -published boolean
-                    -timestamp y user usar los del estado o el windows.
-    -signupForm:
-        -crea un form
-        -si esta todo correcto
-            -crea el usuario y te manda a loguear
 
-        -if no esta todo correcto
-            -te muestra errores
-        
+   -post edit
+        -delete button
+        -edit content
+            -title
+            -category
+            -content
+            -photo
+            -published
+            
+
     -profile:
     -que te deje editar la imagen nada mas
     -o qe te deje editar el username solo. nada mas fuera de so.

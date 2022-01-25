@@ -12,15 +12,6 @@ const FileUploader = ({onFileSelect}) => {
   return (
     <div className="file-uploader">
       <Input display="block" position={"static"} type="file" onChange={handleFileInput} />
-      <Button
-        bg="secondary.strong"
-        className="btn btn-primary"
-        color="white"
-        position={"static"}
-        onClick={(e) => fileInput.current && fileInput.current.click()}
-      >
-        UPLODEAR imagen
-      </Button>
     </div>
   );
 };

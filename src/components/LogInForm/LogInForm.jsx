@@ -12,12 +12,9 @@ import {useState, useEffect} from "react";
 import PostLogin from "../helpermodules/PostLogin";
 
 function LogInForm({storeUser}) {
-  const [show, setShow] = useState(false);
   const [username, SetUsername] = useState("");
   const [password, SetPassword] = useState("");
   const [errorMsg, setErrorMsg] = useState("");
-
-  const handleClick = () => setShow(!show);
 
   const loginHandler = async (user, password) => {
     let User = await PostLogin(user, password);
@@ -62,15 +59,16 @@ function LogInForm({storeUser}) {
                 await loginHandler(username, password);
               }}
             >
-              <FormControl isRequired>
+              <FormControl isRequired position={"static"}>
                 <FormLabel htmlFor="username">Username</FormLabel>
 
-                <InputGroup>
+                <InputGroup position={"static"}>
                   <Input
                     autoComplete="true"
                     id="username"
                     name="username"
                     placeholder="username"
+                    position={"static"}
                     value={username}
                     onChange={(event) => {
                       SetUsername(event.target.value);
@@ -81,27 +79,23 @@ function LogInForm({storeUser}) {
                   Password
                 </FormLabel>
 
-                <InputGroup>
+                <InputGroup position={"static"}>
                   <Input
                     autoComplete="true"
                     id="password"
                     name="password"
                     placeholder="Enter password"
+                    position={"static"}
                     pr="4.5rem"
-                    type={show ? "text" : "password"}
+                    type={"password"}
                     value={password}
                     onChange={(event) => {
                       SetPassword(event.target.value);
                     }}
                   />
-                  <InputRightElement width="4.5rem">
-                    <Button h="1.75rem" size="sm" onClick={handleClick}>
-                      {show ? "Hide" : "Show"}
-                    </Button>
-                  </InputRightElement>
                 </InputGroup>
               </FormControl>
-              <Button colorScheme="teal" mt={4} type="submit">
+              <Button colorScheme="teal" mt={4} position={"static"} type="submit">
                 Submit
               </Button>
               {errorMsg !== "" && (

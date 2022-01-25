@@ -1,19 +1,11 @@
 import {Box, Flex, Text, Heading} from "@chakra-ui/react";
-import {
-  FormControl,
-  FormLabel,
-  Button,
-  InputRightElement,
-  Input,
-  InputGroup,
-} from "@chakra-ui/react";
+import {FormControl, FormLabel, Button, Input, InputGroup} from "@chakra-ui/react";
 import {useState, useEffect, createRef} from "react";
 
 import FileUploader from "../helpermodules/FileUploader";
 import PostSignUp from "../helpermodules/PostSignUp";
 
 function SignUpForm() {
-  const [show, setShow] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
   const [isLoading, SetLoading] = useState(false);
 
@@ -53,7 +45,6 @@ function SignUpForm() {
       }, 2000);
     }
   };
-  const handleClick = () => setShow(!show);
 
   return (
     <main>
@@ -149,17 +140,12 @@ function SignUpForm() {
                     placeholder="Enter password"
                     position={"static"}
                     pr="4.5rem"
-                    type={show ? "text" : "password"}
+                    type={"password"}
                     value={password}
                     onChange={(event) => {
                       SetPassword(event.target.value);
                     }}
                   />
-                  <InputRightElement width="4.5rem">
-                    <Button h="1.75rem" position={"static"} size="sm" onClick={handleClick}>
-                      {show ? "Hide" : "Show"}
-                    </Button>
-                  </InputRightElement>
                 </InputGroup>
                 <FormLabel htmlFor="confpassword" marginTop={5}>
                   Confirm Password
@@ -172,7 +158,7 @@ function SignUpForm() {
                     placeholder="confirm password"
                     position={"static"}
                     pr="4.5rem"
-                    type={show ? "text" : "password"}
+                    type={"password"}
                     value={confPassword}
                     onChange={(event) => {
                       SetConfPassword(event.target.value);

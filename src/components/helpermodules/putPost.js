@@ -1,7 +1,6 @@
-const postPost = async (body, token) => {
+const putPost = async (body, token) => {
   try {
-    console.log(token);
-    const LINK = "https://floblogapi.herokuapp.com/api/post";
+    const LINK = "http://localhost:4000/api/post"; /* "https://floblogapi.herokuapp.com/api/post" */
     const formData = new FormData();
 
     for (const name in body) {
@@ -9,7 +8,7 @@ const postPost = async (body, token) => {
     }
 
     let response = await fetch(LINK, {
-      method: "POST",
+      method: "PUT",
       body: formData,
       headers: {
         Authorization: "Bearer " + token,
@@ -25,4 +24,4 @@ const postPost = async (body, token) => {
   }
 };
 
-export default postPost;
+export default putPost;

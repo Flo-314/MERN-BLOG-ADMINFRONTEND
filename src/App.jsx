@@ -14,6 +14,7 @@ import "./App.css";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import LogOut from "./components/LogOut/LogOut";
+import EditPost from "./components/Post/EditPost";
 function App() {
   const [User, setUser] = useState();
   const storeUser = (user) => {
@@ -46,6 +47,7 @@ function App() {
           <Route element={<LogOut setUser={setUser} />} path="/Log-Out" />
           <Route element={<Profile User={User} />} path="/Profile" />
           <Route element={<SignUpForm User={User} />} path="/Sign-Up" />
+          <Route element={<EditPost User={User} />} path="/edit/:id" />
         </Routes>
         <Footer User={User} />
       </ChakraProvider>

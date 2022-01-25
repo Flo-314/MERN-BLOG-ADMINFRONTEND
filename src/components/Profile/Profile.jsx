@@ -1,4 +1,4 @@
-function Profile() {
+function Profile({User}) {
   return <main />;
 }
 
