@@ -3,7 +3,5 @@ export default async function fetchPost(postName) {
   let data = await fetch(link);
   let post = await data.json();
 
-  console.log(post);
-
   return post.post;
 }

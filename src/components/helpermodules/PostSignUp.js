@@ -1,6 +1,5 @@
 const postPost = async (body, token) => {
   try {
-    console.log(token);
     const LINK = "https://floblogapi.herokuapp.com/api/post";
     const formData = new FormData();
 
@@ -17,7 +16,6 @@ const postPost = async (body, token) => {
     });
 
     response = await response.json();
-    console.log(response);
 
     return response;
   } catch (err) {

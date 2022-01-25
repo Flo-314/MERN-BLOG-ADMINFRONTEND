@@ -5,7 +5,6 @@ const PostLogin = async (user, password) => {
   let response = await fetch(LINK, {method: "POST"});
 
   response = await response.json();
-  console.log(response);
 
   return response;
 };

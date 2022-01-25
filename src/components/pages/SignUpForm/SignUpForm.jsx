@@ -2,8 +2,8 @@ import {Box, Flex, Text, Heading} from "@chakra-ui/react";
 import {FormControl, FormLabel, Button, Input, InputGroup} from "@chakra-ui/react";
 import {useState, useEffect, createRef} from "react";
 
-import FileUploader from "../helpermodules/FileUploader";
-import PostSignUp from "../helpermodules/PostSignUp";
+import FileUploader from "../../helpermodules/FileUploader";
+import PostSignUp from "../../helpermodules/PostSignUp";
 
 function SignUpForm() {
   const [errorMsg, setErrorMsg] = useState("");

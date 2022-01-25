@@ -1,7 +1,6 @@
-const deletePost = async (body, token) => {
+const postPost = async (body, token) => {
   try {
-    console.log(token);
-    const LINK = "http://localhost:4000/api/post";
+    const LINK = "https://floblogapi.herokuapp.com/api/post";
     const formData = new FormData();
 
     for (const name in body) {
@@ -9,7 +8,7 @@ const deletePost = async (body, token) => {
     }
 
     let response = await fetch(LINK, {
-      method: "DELETE",
+      method: "POST",
       body: formData,
       headers: {
         Authorization: "Bearer " + token,
@@ -17,7 +16,6 @@ const deletePost = async (body, token) => {
     });
 
     response = await response.json();
-    console.log(response);
 
     return response;
   } catch (err) {
@@ -25,4 +23,4 @@ const deletePost = async (body, token) => {
   }
 };
 
-export default deletePost;
+export default postPost;

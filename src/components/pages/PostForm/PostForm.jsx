@@ -12,8 +12,8 @@ import {
   Switch,
 } from "@chakra-ui/react";
 
-import FileUploader from "../helpermodules/FileUploader";
-import postPost from "../helpermodules/postPost";
+import FileUploader from "../../helpermodules/FileUploader";
+import postPost from "../../helpermodules/fetchposts/postPost";
 function PostForm({User}) {
   const editor = useRef(null);
   const config = {

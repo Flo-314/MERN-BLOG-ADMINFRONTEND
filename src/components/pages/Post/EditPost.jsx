@@ -14,10 +14,10 @@ import {
 } from "@chakra-ui/react";
 import {useParams} from "react-router";
 
-import FileUploader from "../helpermodules/FileUploader";
-import getPost from "../helpermodules/getPost";
-import deletePost from "../helpermodules/deletePost";
-import putPost from "../helpermodules/putPost";
+import FileUploader from "../../helpermodules/FileUploader";
+import getPost from "../../helpermodules/fetchposts/getPost";
+import deletePost from "../../helpermodules/fetchposts/deletePost";
+import putPost from "../../helpermodules/fetchposts/putPost";
 function EditPost({User}) {
   const editor = useRef(null);
   const config = {

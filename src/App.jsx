@@ -5,16 +5,16 @@ import {ChakraProvider} from "@chakra-ui/react";
 import theme from "../Theme";
 
 import localStoreUser from "./components/helpermodules/LocalStoreUser";
-import Home from "./components/Home/Home";
-import PostForm from "./components/PostForm/PostForm";
-import LogInForm from "./components/LogInForm/LogInForm";
-import Profile from "./components/Profile/Profile";
-import SignUpForm from "./components/SignUpForm/SignUpForm";
+import Home from "./components/pages/Home/Home";
+import PostForm from "./components/pages/PostForm/PostForm";
+import LogInForm from "./components/pages/LogInForm/LogInForm";
+import Profile from "./components/pages/Profile/Profile";
+import SignUpForm from "./components/pages/SignUpForm/SignUpForm";
 import "./App.css";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
-import LogOut from "./components/LogOut/LogOut";
-import EditPost from "./components/Post/EditPost";
+import LogOut from "./components/pages/LogOut/LogOut";
+import EditPost from "./components/pages/Post/EditPost";
 function App() {
   const [User, setUser] = useState();
   const storeUser = (user) => {

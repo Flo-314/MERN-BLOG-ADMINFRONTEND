@@ -1,6 +1,6 @@
 const putPost = async (body, token) => {
   try {
-    const LINK = "http://localhost:4000/api/post"; /* "https://floblogapi.herokuapp.com/api/post" */
+    const LINK = "https://floblogapi.herokuapp.com/api/post";
     const formData = new FormData();
 
     for (const name in body) {

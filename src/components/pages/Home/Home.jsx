@@ -3,11 +3,9 @@ import {useState, useEffect} from "react";
 import {v4 as uuid, v4} from "uuid";
 
 import PostCard from "../Post/PostCard";
-import getPosts from "../helpermodules/getPosts";
+import getPosts from "../../helpermodules/fetchposts/getPosts";
 function Home({User}) {
   const [posts, setPosts] = useState();
-
-  console.log(posts);
 
   useEffect(() => {
     // eslint-disable-next-line no-unused-vars

@@ -9,7 +9,7 @@ import {
 } from "@chakra-ui/react";
 import {useState, useEffect} from "react";
 
-import PostLogin from "../helpermodules/PostLogin";
+import PostLogin from "../../helpermodules/PostLogin";
 
 function LogInForm({storeUser}) {
   const [username, SetUsername] = useState("");

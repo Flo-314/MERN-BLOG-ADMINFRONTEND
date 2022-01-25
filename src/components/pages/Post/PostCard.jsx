@@ -2,8 +2,6 @@ import {Button, Flex, Heading, Link, Text} from "@chakra-ui/react";
 import {Link as LinkRouter} from "react-router-dom";
 
 function PostCard({Post}) {
-  console.log(Post);
-
   return (
     <Flex align={"center"} gap={5} justify={"center"} padding={20}>
       <Heading>{Post.title}</Heading>
